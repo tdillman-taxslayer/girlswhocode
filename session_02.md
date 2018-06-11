@@ -39,6 +39,7 @@ Another common base system is **Base2**.  It has only two symbols to represent a
 Any base system regardless of how many symbols it has can represent and can contain any number from any other base. For example, a number in Base2 which might be **10011** can be represented in Base<sub>10</sub> as **19**
 
 The pattern to recognize here is the position of the symbol from left to right. For example, the number 312 in **base10** can be represented in parts
+
 |3 x 10<sup>2</sup>|2 x 10<sup>1</sup>|1 x 10<sup>0</sup>|
 |-|:-:|:-:|
 |3|2|1|
@@ -48,6 +49,7 @@ so that calculation comes out to be
 |3 x 100|2 x 10|1 x 1|
 |-|:-:|:-:|
 |300|20|1|
+
 which equals **321** or our original number!
 
 Notice the pattern is [number] x [base]<sup>[exponent]</sup>.  This pattern is for **every** base system you can image up to infinity.  
@@ -97,6 +99,7 @@ Lets say that you have a mobile device that has several apps installed onto the 
 ``` Note that GB and MB stand for GigaByte and MegaByte.  These are forms of measurments in computer science.```
 
 #### Computer Units of Storage
+
 |Unit|Equivalent Bytes|
 |-|:-:|
 |1 kilobyte (KB)|1,024 bytes|
@@ -120,6 +123,7 @@ There are potentially billions of 1s and 0s on your phone right now and the comp
 ### Primitives in Javascript
 
 4 Primary Primitive types
+
 |type|example|
 |-|:-:|
 |string|"hello world"|
@@ -128,6 +132,7 @@ There are potentially billions of 1s and 0s on your phone right now and the comp
 |undefined|nothing or no real value|
 
 There are 2 complex types in Javascript
+
 |type|example|
 |-|:-:|
 |object|[1, 2, 3, 4]|
