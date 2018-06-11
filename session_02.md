@@ -6,6 +6,7 @@ Today's computers work and function just like yesterday's computers in that they
 Most mathmatics classes that are taught in school use the **Natural** Base 10.  In the natural base 10 we have "10" characters to represent different types of numbers.  These are also known as "symbols". 
 
 The symbols we have to represent a Base 10 numbering system are...
+
 |Symbol|Representation|
 |-|:-:|
 |0|zero|
