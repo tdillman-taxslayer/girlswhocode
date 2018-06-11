@@ -162,11 +162,247 @@ Most all programming languages support a common set of primitives.  Almost every
 
 ## Functions
 ----
-## Classes
-### Methods / Functions
+
+A function can be considered a unit of *work* done by the computer.  When you define a function you basically stub out a blueprint of things to do.  
+
+In **JavaScript** a function is defined as followed:
+
+```
+function someFunction() {
+  statements
+}
+```
+
+Keyword: **function** defines the name of this function in javascript. 
+
+Javascript actually has several ways that you can define a function.  This is called a **named** function because its name is **someFunction**.  During this course, we will discuss anonymous functions and **IIFE** or Immediately Invokable Function Expression
+
+Your function can take on any name that you can think of however best practice dictates that your function's name should make sense and hint at what exactly it does.  For example, I have a function that takes two **parameters** and adds them together.  This function returns the result of the addition operation. 
+
+```
+function addTwoNumbers(num1, num2) {
+  return num1 + num2;
+}
+```
+
+Notice how my function's name is **addTwoNumbers**.  Without knowing even how to read Javascript you can glean some understanding about what the function accomplishes.  
+
+Another best practice is to only perform a single task within a function and if you must perform multiple actions within a single function, you should split those actions into different functions.  
+
+An example would be if I had a bad function that added two numbers together then printed out and returned the result. 
+
+```
+function addTwoNumbersAndPrintTheResult(num1, num2) {
+  var result = num1 + num2;
+  console.log(result);
+  return result;
+}
+```
+
+A better version of this function would be to declare my print operation **console.log()** as its own function. 
+
+```
+function addTwoNumbers(num1, num2) {
+  return num1 + num2;
+}
+
+function printToConsole(value) {
+  console.log(value);
+}
+```
+
+This makes it clear what each functions purpose is and because there isn't many things going on in the function its very easy to debug in case there are any bugs in the code. 
+
 ### Function Parameters
+
+One thing that we've done previously is give a function **parameters**.  These are like inputs.  You can think of a parameter like a vending machine.  The vending machine takes in a couple of parameters such as...
+
+1. Money
+2. Your drink selection such as A4
+
+If our vending machine had an function it would probably look like this...
+
+```
+var currentAmountPutIntoMachine = 0;
+
+function addMoney(money) {
+  
+  currentAmountPutIntoMachine = currentAmountPutIntoMachine + money;
+
+  printCurrentAmountInMachine();
+
+}
+
+function vend(selection) {
+  if (hasEnoughMoney(currentAmountPutIntoMachine, 1.00) {
+    console.log(`Vending your selection: ${selection}`);
+    giveChange();
+  } else {
+    console.log("sorry you do not have enough money");
+  }
+}
+
+function giveChange() {
+  if(currentAmountPutIntoMachine > 1.00) {
+    let change = currentAmountPutIntoMachine - 1.00;
+    console.log(`Here is your remaining change ${change}`);
+  } else {
+    console.log("You put in an exact amount so you do not get change!");
+  }
+}
+
+function hasEnoughMoney(money, priceOfSelection) {
+  if( money >== priceOfSelection) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function printCurrentAmountInMachine() {
+  console.log(currentAmountPutIntoMachine);
+}
+```
+
+Notice how we break up all the different functions of a vending machine into their own very small simple functions? Almost anything can be broken down into smaller more managable chunks. 
+
+As a programmer, it is one of your tasks to figure out just how exactly to break down a complex problem into smaller steps.  This is probably the most important thing you can learn as a programmer because it not only is a useful skill when writing software, you can also apply it to almost any aspect of your life. 
+
+## Classes
+
+Classes are actually a newer concept in Javascript.  In Javascript versions greater than or equal to ES6, we have the keyword **class**.  A class in Javascript is not really a class in the traditional sense, its mostly syntactical sugar.  During this course we will explain what this means. 
+
+### Class Syntax
+
+```
+// An ES6 Class in Javascript
+
+class MyAwesomeClass {
+  constructor(param1, param2) {
+    this.param1 = param1;
+    this.param2 = param2;
+  }
+}
+```
+
+Notice how I declare my class and a **constructor** which also takes in **parameters** which I have named 'param1' and param2.  Don't get confused, your parameters can be whatever you want to name them. 
+
+Another point to take notice of is the **this** keyword.  This refers to the class you are instantiating.  
+
+**Instantiating**: means to bring it forth and allocate memory for it in the computer.  When you instantiate something on the computer, it exists somewhere in memory represented as a binary group of numbers. 
+
+By saying `this.param1 = param1` I'm letting the class know that it now has a property on itself called 'param1' and you can access it within and outside of the class.  
+
+To use this class I can instantiate it in javascript and then print out the value of param1.
+
+```
+class SodaMachine {
+  constructor(numOfBottles) {
+    this.bottleCount = numOfBottles;
+  }
+}
+
+let mySodeMachine = new SodaMachine(25);
+console.log(mySodaMachine.bottleCount);
+```
+
+Notice another keyword here called **new**.  New is required when you are creating a new **instance** of a class.  An **instance** means that the object is unique and is allocated in memory somewhere on the computer.  
+
+### Methods / Functions
+
+A class can also have functions that you define on the class itself.  
+
+```
+class SodaMachine {
+  constructor(bottles) {
+    this.bottles = bottles;
+    this.pricePerBottle = 1.0;
+  }
+  /*
+    Vends the selection and removes the product from the array of available products.
+  */
+  vend(selection) {
+    let selectedItem = this.bottles[selection];
+    
+    // splice is an operation on an array
+    this.bottles = this.bottles.splice(selection, 1);
+    return selectedItem;
+  }
+
+  /*
+  Prints out to the console, the available bottle selection.
+  */
+  availableProducts() {
+    this.bottles.forEach(bottle => {
+      console.log(bottle);
+    });
+  }
+}
+
+let machine = new SodaMachine(['Coke', 'Sprite', 'Dr. Pepper']);
+
+machine.vend(0); // will vend me 'Coke' and remove 'Coke' from the available products. 
+
+availableProducts();
+// prints out: ['Sprite', 'Dr. Pepper'];
+
+```
+
 ----
 ## Conditional Logic
-----
+
+Conditional logic asks a very basic question: If some condition is true then perform the operation else perform a different operation. 
+
+An example of an conditional statement in Javascript is the **if** and **else** statement.
+
+```
+if (myAge >= 27) {
+  console.log("You are old");
+} else {
+  console.log("You are young");
+}
+```
+
 ### The If Statement
+
+This **if** statement checks to see if `myAge` is greater than or equal to the number `27`.  If it is equal to or greater than 27, it prints out to the console that I am old, otherwise it will print you are young.  
+
+All if statements **MUST** ask the basic question if *some condition is true* then do this else do something that. 
+
+```
+if (true) {
+  do this
+} else {
+  do this instead
+}
+```
+
+The if statement is just one of many powerful conditional tools in your toolbelt.  Although it appears to be very basic, its actually quite a powerful tool and is the backbone of most programs. 
+
+Your if statement can also contain multiple conditions that must be met.  
+
+There are two types of conditionals or **boolean** logic. 
+
+The **AND** condition and the **OR** condition
+
+Whenever you have an **AND** condition **BOTH** criteria must be met in order for the if statement to be **true**
+
+For example lets say I have two children named Sally and Bob.  Sally is 12 years old and Bob is 10.  In order to ride the rollercoaster, the age requirement is at a minimum of 9 years or older. 
+
+so our javascript would look something like this
+
+```
+if (Sally.age >== 9 && Bob.age >== 9) {
+  console.log("Sally and Bob can ride the ride!!!");
+} else {
+  console.log("Sorry, someone isn't old enough");
+}
+```
+
+Notice the else statement, we cannot determine who exactly isn't old enough we just know that one of them might have not been old enough.  In this case however **both** Bob and Sally are old enough to ride the rollercoaster so the if statement evaluates to true and thus it prints out "Sally and Bob can ride the ride!!!".
+
+
+
+----
+
 
