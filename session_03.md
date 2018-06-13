@@ -9,4 +9,4 @@ Click [here](https://hourofcode.com/soloweb) to start learning how to code in HT
 
 Once on the website, click "Learn HTML" below the image. 
 
-![hour_of_code](https://github.com/tdillman-taxslayer/girlswhocode/screenshots/soloweb_splash.png)
+![hour_of_code](https://github.com/tdillman-taxslayer/girlswhocode/blob/master/screenshots/soloweb_splash.png)
